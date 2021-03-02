@@ -1,0 +1,13 @@
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.exe
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.deps.json
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.runtimeconfig.json
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.runtimeconfig.dev.json
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.dll
+D:\users\is12331\мдк 02.01\pz6\bin\Debug\netcoreapp3.1\pz6.pdb
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.AssemblyInfoInputs.cache
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.AssemblyInfo.cs
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.csproj.CoreCompileInputs.cache
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.dll
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.pdb
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.genruntimeconfig.cache
+D:\users\is12331\мдк 02.01\pz6\obj\Debug\netcoreapp3.1\pz6.csprojAssemblyReference.cache
