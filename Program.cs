@@ -65,7 +65,7 @@ namespace pz10
         }
         private static double Division(double a, double b)
         {
-            return a * b;
+            return a / b;
         }
         private static double Difference(double a, double b)
         {
