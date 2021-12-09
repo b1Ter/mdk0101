@@ -1,0 +1,66 @@
+﻿<Page x:Class="FabricStore.pages.MaterialEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FabricStore.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MaterialEditPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="materialIDTextBlock"
+                       Style="{StaticResource textForEditPage}"/>
+            <TextBlock Style="{StaticResource textForEditPage}"
+                       Text="Name"/>
+            <TextBox Text="{Binding Name}"
+                Style="{StaticResource textBoxForEditPage}"/>
+            <TextBlock Style="{StaticResource textForEditPage}"
+                       Text="Type"/>
+            <ComboBox x:Name="cmbType"
+                      SelectedItem="{Binding MaterialType}"
+                      DisplayMemberPath="Name"
+                Style="{StaticResource comboBoxForEditPage}"/>
+            <TextBlock Style="{StaticResource textForEditPage}"
+                       Text="Price"/>
+            <TextBox Text="{Binding Price}"
+                Style="{StaticResource textBoxForEditPage}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1">
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Stretch">
+                <TextBlock Style="{StaticResource textForEditPage}"
+                       Text="Image"/>
+                <Button Content="Add image" x:Name="btnAddImage"
+                        Style="{StaticResource standartButton}"
+                        HorizontalContentAlignment="Right"
+                        Margin="160,0,10,0" Click="btnAddImage_Click"/>
+            </StackPanel>
+            
+            <Image x:Name="imageMaterial"
+                   Width="250" Height="250"
+                   Source="{Binding Image}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+            <Button x:Name="btnCancel" Content="Cancel"
+                    Click="btnCancel_Click" Margin="20"
+                    Style="{StaticResource standartButton}"/>
+            <Button x:Name="btnAdd" Content="Save"
+                    Click="btnAdd_Click" Margin="20"
+                    Style="{StaticResource standartButton}"/>
+        </StackPanel>
+    </Grid>
+</Page>

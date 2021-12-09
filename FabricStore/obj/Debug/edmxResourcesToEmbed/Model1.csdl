@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdMaterialsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Delivery">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MaterialDeliveries" Relationship="Self.FK_MaterialDelivery_Delivery" FromRole="Delivery" ToRole="MaterialDelivery" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" />
+    <NavigationProperty Name="TypeMaterial" Relationship="Self.FK_Material_TypeMaterial" FromRole="Material" ToRole="TypeMaterial" />
+    <NavigationProperty Name="MaterialDeliveries" Relationship="Self.FK_MaterialDelivery_Material" FromRole="Material" ToRole="MaterialDelivery" />
+    <NavigationProperty Name="SaleMaterials" Relationship="Self.FK_SaleMaterial_Material" FromRole="Material" ToRole="SaleMaterial" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialDelivery">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Delivery" Type="Int32" Nullable="false" />
+    <Property Name="Material" Type="Int32" Nullable="false" />
+    <Property Name="CountMeters" Type="Double" Nullable="false" />
+    <Property Name="PriceForDelievery" Type="Double" Nullable="false" />
+    <Property Name="DateDelievery" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Delivery1" Relationship="Self.FK_MaterialDelivery_Delivery" FromRole="MaterialDelivery" ToRole="Delivery" />
+    <NavigationProperty Name="Material1" Relationship="Self.FK_MaterialDelivery_Material" FromRole="MaterialDelivery" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SaleMaterials" Relationship="Self.FK_SaleMaterial_Payment" FromRole="Payment" ToRole="SaleMaterial" />
+  </EntityType>
+  <EntityType Name="SaleMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Material" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Double" Nullable="false" />
+    <Property Name="DateSale" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Payment" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Material1" Relationship="Self.FK_SaleMaterial_Material" FromRole="SaleMaterial" ToRole="Material" />
+    <NavigationProperty Name="Payment1" Relationship="Self.FK_SaleMaterial_Payment" FromRole="SaleMaterial" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TypeMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Materials" Relationship="Self.FK_Material_TypeMaterial" FromRole="TypeMaterial" ToRole="Material" />
+  </EntityType>
+  <Association Name="FK_MaterialDelivery_Delivery">
+    <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
+    <End Role="MaterialDelivery" Type="Self.MaterialDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delivery">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MaterialDelivery">
+        <PropertyRef Name="Delivery" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Material_TypeMaterial">
+    <End Role="TypeMaterial" Type="Self.TypeMaterial" Multiplicity="0..1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterialDelivery_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="MaterialDelivery" Type="Self.MaterialDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MaterialDelivery">
+        <PropertyRef Name="Material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleMaterial_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="1" />
+    <End Role="SaleMaterial" Type="Self.SaleMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SaleMaterial">
+        <PropertyRef Name="Material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SaleMaterial_Payment">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+    <End Role="SaleMaterial" Type="Self.SaleMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SaleMaterial">
+        <PropertyRef Name="Payment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdMaterialsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
+    <EntitySet Name="Materials" EntityType="Self.Material" />
+    <EntitySet Name="MaterialDeliveries" EntityType="Self.MaterialDelivery" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="SaleMaterials" EntityType="Self.SaleMaterial" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TypeMaterials" EntityType="Self.TypeMaterial" />
+    <AssociationSet Name="FK_MaterialDelivery_Delivery" Association="Self.FK_MaterialDelivery_Delivery">
+      <End Role="Delivery" EntitySet="Deliveries" />
+      <End Role="MaterialDelivery" EntitySet="MaterialDeliveries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Material_TypeMaterial" Association="Self.FK_Material_TypeMaterial">
+      <End Role="TypeMaterial" EntitySet="TypeMaterials" />
+      <End Role="Material" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterialDelivery_Material" Association="Self.FK_MaterialDelivery_Material">
+      <End Role="Material" EntitySet="Materials" />
+      <End Role="MaterialDelivery" EntitySet="MaterialDeliveries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleMaterial_Material" Association="Self.FK_SaleMaterial_Material">
+      <End Role="Material" EntitySet="Materials" />
+      <End Role="SaleMaterial" EntitySet="SaleMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SaleMaterial_Payment" Association="Self.FK_SaleMaterial_Payment">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="SaleMaterial" EntitySet="SaleMaterials" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

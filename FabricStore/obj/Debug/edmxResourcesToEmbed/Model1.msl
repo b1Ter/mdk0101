@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище bdMaterialsModelContainer" CdmEntityContainer="bdMaterialsEntities">
+    <EntitySetMapping Name="Deliveries">
+      <EntityTypeMapping TypeName="bdMaterialsModel.Delivery">
+        <MappingFragment StoreEntitySet="Delivery">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="bdMaterialsModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialDeliveries">
+      <EntityTypeMapping TypeName="bdMaterialsModel.MaterialDelivery">
+        <MappingFragment StoreEntitySet="MaterialDelivery">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="CountMeters" ColumnName="CountMeters" />
+          <ScalarProperty Name="PriceForDelievery" ColumnName="PriceForDelievery" />
+          <ScalarProperty Name="DateDelievery" ColumnName="DateDelievery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="bdMaterialsModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleMaterials">
+      <EntityTypeMapping TypeName="bdMaterialsModel.SaleMaterial">
+        <MappingFragment StoreEntitySet="SaleMaterial">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="DateSale" ColumnName="DateSale" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="bdMaterialsModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeMaterials">
+      <EntityTypeMapping TypeName="bdMaterialsModel.TypeMaterial">
+        <MappingFragment StoreEntitySet="TypeMaterial">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
